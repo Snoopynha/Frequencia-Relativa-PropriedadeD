@@ -8,3 +8,15 @@ function iniciarLancamentos() {
             atualizarGraficos(data);
         });
 }
+
+function atualizarGraficos(data) {
+    const ctxCaras = document.getElementById('graficoCaras').getContext('2d');
+    const ctxCoroas = document.getElementById('graficoCoroas').getContext('2d');
+
+    /* 
+    const config = {
+        type: 'line',
+        data: data,
+    };
+    */
+}
