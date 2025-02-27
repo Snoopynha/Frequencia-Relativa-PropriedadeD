@@ -2,11 +2,11 @@ function iniciarLancamentos() {
     const qtdLancamentos = document.getElementById('qtdLancamentos').value;
     const intervaloLancamentos = document.getElementById('intervaloLancamentos').value;
 
-    fetch('/lancar?numLancamentos=${numLancamentos}&intervalo=${intervalo}')
+    fetch('/lancar?qtdLancamentos=${qtdLancamentos}&intervaloLancamentos=${intervaloLancamentos}')
         .then(response => response.json())
         .then(data => {
             atualizarGraficos(data);
-        });
+    });
 }
 
 function atualizarGraficos(data) {
@@ -66,4 +66,7 @@ function atualizarGraficos(data) {
             }
         }
     };
+
+    new Chart(ctxCaras, configCaras);
+    new Chart(ctxCoroas, configCoroas);
 }
