@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequência Relativa | Propriedade D</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>Lançador de moeda</h1>
+    <form>
+        <label for="qtdLancamentos">Quantidade de lançamentos:</label><span>(no mínimo 2)</span>
+        <input type="number" name="qtdLancamentos" id="qtdLancamentos" placeholder="Quantidade total de lançamentos a ser realizado" min="2" required>
+        <label for="intervaloLancamentos">Intervalo entre lançamentos:</label>
+        <input type="number" name="intervaloLancamentos" id="intervaloLancamentos" placeholder="Intervalo de um lançamento a outro" min="1" required>
+        <button onclick="iniciarLancamentos()">Fazer lançamentos</button>
+    </form>
+
+    <div>
+        <canvas id="graficoCaras"></canvas>
+        <canvas id="graficoCoroas"></canvas>
+    </div>
+</body>
