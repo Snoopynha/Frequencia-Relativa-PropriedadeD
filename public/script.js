@@ -30,7 +30,14 @@ function atualizarGraficos(data) {
                 fill: false
             }]
         },
-    
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 1
+                }
+            }
+        }
     };
 
     const configCoroas = {
@@ -50,6 +57,13 @@ function atualizarGraficos(data) {
                 fill: false
             }]
         },
-    
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 1
+                }
+            }
+        }
     };
 }
