@@ -14,6 +14,7 @@ function atualizarGraficos(data) {
     const ctxCoroas = document.getElementById('graficoCoroas').getContext('2d');
 
     /* 
+    Base gráfico em Chart.js
     const config = {
         type: 'line',
         data: data,
