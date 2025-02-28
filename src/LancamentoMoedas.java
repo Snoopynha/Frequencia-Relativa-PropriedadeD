@@ -5,7 +5,8 @@ public class LancamentoMoedas {
     public static void main(String[] args) {
     	Spark.staticFileLocation("/public");
     	
-    	Spark
-        Random random = new Random();
+    	Spark.get("/lancar", (req, res) -> {
+            Random random = new Random();
+        });
     }
 }
