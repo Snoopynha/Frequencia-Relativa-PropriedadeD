@@ -1,0 +1,14 @@
+# Maven
+target/
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# Bibliotecas antigas (já que agora usamos o Maven)
+libs/
+
+# Arquivos do Sistema
+.DS_Store
+Thumbs.db
