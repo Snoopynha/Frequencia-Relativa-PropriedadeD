@@ -1,3 +1,6 @@
+let graficoCarasInstance = null;
+let graficoCoroasInstance = null;
+
 function iniciarLancamentos() {
     const qtdLancamentos = document.getElementById('qtdLancamentos').value;
     const intervaloLancamentos = document.getElementById('intervaloLancamentos').value;
@@ -12,6 +15,14 @@ function iniciarLancamentos() {
 function atualizarGraficos(data) {
     const ctxCaras = document.getElementById('graficoCaras').getContext('2d');
     const ctxCoroas = document.getElementById('graficoCoroas').getContext('2d');
+
+    // Se já existir um gráfico destroi
+    if (graficoCarasInstance) {
+        graficoCarasInstance.destroy();
+    }
+    if (graficoCoroasInstance) {
+        graficoCoroasInstance.destroy();
+    }
 
     const configCaras = {
         type: 'line',
@@ -67,6 +78,6 @@ function atualizarGraficos(data) {
         }
     };
 
-    new Chart(ctxCaras, configCaras);
-    new Chart(ctxCoroas, configCoroas);
+    graficoCarasInstance = new Chart(ctxCaras, configCaras);
+    graficoCoroasInstance = new Chart(ctxCoroas, configCoroas);
 }
