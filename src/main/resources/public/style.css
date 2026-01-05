@@ -1,6 +1,6 @@
 :root {
     --primary-blue: #4448FF;
-    --gold-coin: #FFC85C;
+    --gold-coin: #ffc85c;
     --bg-light: #f8f9fa;
 }
 
@@ -112,6 +112,16 @@ input {
     border-radius: 50%;
     backface-visibility: hidden;
     border: 4px solid #d4af37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coin-icon {
+    width: 70px;
+    height: 70px;
+    color: #f2bb15;
+    pointer-events: none;
 }
 
 .heads {
