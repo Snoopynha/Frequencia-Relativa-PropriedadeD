@@ -8,14 +8,30 @@ function iniciarLancamentos() {
 
     coinElement.classList.add('flipping');
 
-    fetch(`/lancar?qtdLancamentos=${qtdLancamentos}&intervaloLancamentos=${intervaloLancamentos}`)
-        .then(response => response.json())
-        .then(data => {
-            setTimeout(() => {
-                coinElement.classList.remove('flipping');
-                atualizarGraficos(data);
-            }, 1000);
-    });
+    let totalCaras = 0;
+    let totalCoroas = 0;
+    const labels = [];
+    const carasData = [];
+    const coroasData = [];
+
+    for (let i = 1; i <= qtdLancamentos; i++) {
+        if (Math.random() < 0.5) {
+            totalCaras++;
+        } else {
+            totalCoroas++;
+        }
+
+        if (i % intervaloLancamentos === 0 || i === 1) {
+            labels.push(i);
+            carasData.push(totalCaras / i);
+            coroasData.push(totalCoroas / i);
+        }
+    }
+
+    setTimeout(() => {
+        coinElement.classList.remove('flipping');
+        atualizarGraficos({ labels, caras: carasData, coroas: coroasData });
+    }, 800);
 }
 
 function limparGraficos() {
