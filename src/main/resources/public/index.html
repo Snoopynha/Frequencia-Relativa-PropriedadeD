@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,46 @@
 </head>
 
 <body>
-    <h1>Lançador de moeda</h1>
-    <form>
-        <label for="qtdLancamentos">Quantidade de lançamentos:</label><span>(no mínimo 2)</span>
-        <input type="number" name="qtdLancamentos" id="qtdLancamentos" placeholder="Quantidade total de lançamentos a ser realizado" min="2" required>
-        <label for="intervaloLancamentos">Intervalo entre lançamentos:</label>
-        <input type="number" name="intervaloLancamentos" id="intervaloLancamentos" placeholder="Intervalo de um lançamento a outro" min="1" required>
-        <button type="button" onclick="iniciarLancamentos()">Fazer lançamentos</button>
-    </form>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h1>Lançador de Moeda</h1>
 
-    <div>
-        <canvas id="graficoCaras"></canvas>
-        <canvas id="graficoCoroas"></canvas>
+            <form id="meuForm">
+                <div class="input-group">
+                    <label for="qtdLancamentos">Total de Lançamentos</label>
+                    <input type="number" id="qtdLancamentos" value="1000" min="2">
+                </div>
+                <div class="input-group">
+                    <label for="intervaloLancamentos">Intervalo (Eixo X)</label>
+                    <input type="number" id="intervaloLancamentos" value="50" min="1">
+                </div>
+                <div class="button-group">
+                    <button type="button" class="btn-primary" onclick="iniciarLancamentos()">Lançar Moedas</button>
+                    <button type="button" class="btn-secondary" id="limparBtn"
+                        onclick="limparGraficos()">Limpar</button>
+                </div>
+            </form>
+
+            <div class="explanation-box">
+                <h3>O que é a Propriedade D?</h3>
+                <p>Também conhecida como <strong>Lei dos Grandes Números</strong>, ela afirma que conforme aumentamos o
+                    número de experimentos, a frequência relativa de um evento (cara ou coroa) tende a se aproximar da
+                    sua probabilidade teórica (0,5 ou 50%).</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="coin-animation-area">
+                <div id="coin" class="">
+                    <div class="side heads"></div>
+                    <div class="side tails"></div>
+                </div>
+            </div>
+
+            <div class="charts-wrapper">
+                <div class="chart-container"><canvas id="graficoCaras"></canvas></div>
+                <div class="chart-container"><canvas id="graficoCoroas"></canvas></div>
+            </div>
+        </main>
     </div>
 </body>

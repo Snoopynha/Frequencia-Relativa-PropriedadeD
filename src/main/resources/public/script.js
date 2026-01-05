@@ -4,12 +4,24 @@ let graficoCoroasInstance = null;
 function iniciarLancamentos() {
     const qtdLancamentos = document.getElementById('qtdLancamentos').value;
     const intervaloLancamentos = document.getElementById('intervaloLancamentos').value;
+    const coinElement = document.getElementById('coin');
+
+    coinElement.classList.add('flipping');
 
     fetch(`/lancar?qtdLancamentos=${qtdLancamentos}&intervaloLancamentos=${intervaloLancamentos}`)
         .then(response => response.json())
         .then(data => {
-            atualizarGraficos(data);
+            setTimeout(() => {
+                coinElement.classList.remove('flipping');
+                atualizarGraficos(data);
+            }, 1000);
     });
+}
+
+function limparGraficos() {
+    if (graficoCarasInstance) graficoCarasInstance.destroy();
+    if (graficoCoroasInstance) graficoCoroasInstance.destroy();
+    document.getElementById('meuForm').reset();
 }
 
 function atualizarGraficos(data) {
@@ -24,60 +36,52 @@ function atualizarGraficos(data) {
         graficoCoroasInstance.destroy();
     }
 
-    const configCaras = {
-        type: 'line',
-        data: {
-            labels: data.labels,
-            datasets: [{
-                label: 'Frequência de Caras',
-                data: data.caras,
-                borderColor: 'blue',
-                fill: false
-            }, {
-                label: 'Linha de Estabilização',
-                data: Array(data.labels.length).fill(0.5),
-                borderColor: 'red',
-                borderDash: [10,5],
-                fill: false
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 1
-                }
-            }
+    // Configuração comum para os dois gráficos
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        elements: { point: { radius: 2 } },
+        scales: {
+            y: {
+                min: 0,
+                max: 1,
+                title: { display: true, text: 'Frequência Relativa' }
+            },
+            x: { title: { display: true, text: 'Número de Lançamentos' } }
         }
     };
 
-    const configCoroas = {
+    const datasetEstabilizacao = {
+        label: 'Estabilização (0.5)',
+        data: Array(data.labels.length).fill(0.5),
+        borderColor: 'red',
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+        borderDash: [5, 5]
+    };
+
+    graficoCarasInstance = new Chart(ctxCaras, {
         type: 'line',
         data: {
             labels: data.labels,
-            datasets: [{
-                label: 'Frequência de Coroas',
-                data: data.coroas,
-                borderColor: 'yellow',
-                fill: false
-            }, {
-                label: 'Linha de Estabilização',
-                data: Array(data.labels.length).fill(0.5),
-                borderColor: 'red',
-                borderDash: [10,5],
-                fill: false
-            }]
+            datasets: [
+                { label: 'Caras', data: data.caras, borderColor: '#3498db', fill: false },
+                datasetEstabilizacao
+            ]
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 1
-                }
-            }
-        }
-    };
+        options: commonOptions
+    });
 
-    graficoCarasInstance = new Chart(ctxCaras, configCaras);
-    graficoCoroasInstance = new Chart(ctxCoroas, configCoroas);
+    graficoCoroasInstance = new Chart(ctxCoroas, {
+        type: 'line',
+        data: {
+            labels: data.labels,
+            datasets: [
+                { label: 'Coroas', data: data.coroas, borderColor: '#f1c40f', fill: false },
+                datasetEstabilizacao
+            ]
+        },
+        options: commonOptions
+    });
 }
