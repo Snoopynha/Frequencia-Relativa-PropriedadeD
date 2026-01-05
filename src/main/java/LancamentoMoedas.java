@@ -49,16 +49,4 @@ public class LancamentoMoedas {
 			return new Gson().toJson(resultado);
 		});
 	}
-
-	static class Data {
-		String[] labels;
-		double[] caras;
-		double[] coroas;
-
-		Data(String[] labels, double[] caras, double[] coroas) {
-			this.labels = labels;
-			this.caras = caras;
-			this.coroas = coroas;
-		}
-	}
 }
