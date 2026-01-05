@@ -28,7 +28,7 @@ Como observado nos gráficos deste projeto:
 Isso explica por que, após 1.000 ou 10.000 lançamentos, as linhas no gráfico tornam-se quase horizontais, "colando" na linha de referência de 0.5.
 
 ## Demonstração
-[Clique aqui para ver a Demonstração Online](https://snoopynha.github.io/Lei-dos-Grandes-Numeros-PropriedadeD/)
+[Clique aqui para ver a Demonstração Online](https://snoopynha.github.io/Lei-dos-Grandes-Numeros/)
 
 ## Tecnologias Utilizadas
 - **Backend:** Java com framework Spark.
