@@ -4,6 +4,10 @@
     --bg-light: #f8f9fa;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: sans-serif;
@@ -18,10 +22,11 @@ body {
 .sidebar {
     width: 350px;
     background: var(--gold-coin);
-    padding: 30px;
+    padding: 20px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
 }
 
@@ -31,12 +36,12 @@ h1 {
 
 form {
     background: white;
-    padding: 25px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
+    max-width: 100%;
     width: 100%;
-    margin-bottom: 30px;
+    margin: o auto 20px auto;
 }
 
 .input-group {
@@ -162,4 +167,52 @@ input {
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        margin: 5px 0;
+    }
+
+    form {
+        max-width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    .input-group {
+        margin-bottom: 8px;
+    }
+
+    .input-group label {
+        font-size: 0.85rem;
+    }
+
+    input {
+        padding: 8px;
+    }
+
+    .explanation-box {
+        display: none;
+    }
+
+    .main-content {
+        padding: 5px;
+    }
+
+    .chart-container {
+        height: 280px;
+    }
 }
